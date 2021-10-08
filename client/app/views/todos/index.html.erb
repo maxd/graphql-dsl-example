@@ -1,0 +1,30 @@
+<h1>TODOS</h1>
+
+<%= render partial: 'shared/errors' %>
+
+<%= link_to 'New TODO', new_todo_path %>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Priority</th>
+      <th>Title</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @todos.present? %>
+      <% @todos.each do |todo| %>
+        <tr>
+          <td><%= todo[:priority] %></td>
+          <td><%= todo[:title] %></td>
+          <td><%= link_to 'Delete', todo_path(todo[:id]), method: :delete %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4">No TODOs.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

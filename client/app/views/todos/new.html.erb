@@ -1,0 +1,9 @@
+<h1>Create TODO</h1>
+
+<%= render partial: 'shared/errors' %>
+
+<%= form_for :todo, url: todos_path do |f| %>
+  <%= f.select :priority, CreateTodo::PRIORITIES %>
+  <%= f.text_field :title %>
+  <%= f.submit 'Create' %>
+<% end %>
